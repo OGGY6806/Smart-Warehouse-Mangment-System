@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Warehouse Management SYSTEM</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="glass-container">
+        <header>
+            <h1>Smart Warehouse <span class="accent">Management SYSTEM</span></h1>
+            <div class="status-indicator">
+                <span class="dot"></span> System Online
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            <!-- Controls Section -->
+            <section class="card controls">
+                <h2>Operations</h2>
+                <div class="control-group">
+                    <input type="number" id="prodId" placeholder="Prod ID (101-105)" value="101">
+                    <input type="number" id="qty" placeholder="Qty" value="1">
+                    <input type="number" id="prio" placeholder="Priority (1-10)" value="5">
+                    <button onclick="addOrder()" class="btn btn-primary">Place Order</button>
+                </div>
+                <div class="action-buttons">
+                    <button onclick="processOrder()" class="btn btn-accent">Process Next (Heap)</button>
+                    <button onclick="dispatchOrder()" class="btn btn-success">Dispatch (Queue)</button>
+                    <button onclick="undoAction()" class="btn btn-warn">Undo Last</button>
+                </div>
+                <div id="log-display" class="log-box">
+                    <p class="log-entry">System ready...</p>
+                </div>
+            </section>
+
+            <!-- Visualization Section -->
+            <section class="card visualization">
+                <h2>Warehouse Graph (Dijkstra Path)</h2>
+                <canvas id="warehouseCanvas" width="600" height="350"></canvas>
+            </section>
+
+            <!-- Data Panels -->
+            <section class="card panel-queue">
+                <h2>Pending Orders (Max-Heap)</h2>
+                <div id="heap-list" class="data-list">
+                    <!-- Dynamic Items -->
+                </div>
+            </section>
+
+            <section class="card panel-dispatch">
+                <h2>Dispatch Line (FIFO Queue)</h2>
+                <div id="queue-list" class="data-list">
+                    <!-- Dynamic Items -->
+                </div>
+            </section>
+
+            <section class="card panel-inventory">
+                <h2>Inventory (Hash Map)</h2>
+                <div id="inventory-list" class="data-grid">
+                    <!-- Dynamic Items -->
+                </div>
+            </section>
+
+            <section class="card panel-catalog">
+                <h2>Product Catalog (BST)</h2>
+                <div id="catalog-list" class="data-list-compact">
+                    <!-- Dynamic Items -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
